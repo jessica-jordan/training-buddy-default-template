@@ -1,0 +1,8 @@
+<h2>Oh no! There has been an error 😭</h2>
+
+{{#if (eq model.errors.0.status "404")}}
+  <h3>The page you are looking for doesn't exist.</h3>
+{{else}}
+  <h3>There has been an unkown error: ({{model.errors.0.status}}) {{model.errors.0.title}}</h3>
+  <pre>{{model.errors.0.detail}}</pre>
+{{/if}}

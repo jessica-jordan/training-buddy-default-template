@@ -1,0 +1,7 @@
+{{#if (or @logo @image)}}
+  <div class="welcome-page__hero" style={{this.backgroundStyle}}>
+    {{#if @logo}}
+      <img class="welcome-page__logo" src={{@logo}}>
+    {{/if}}
+  </div>
+{{/if}}

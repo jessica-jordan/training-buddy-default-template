@@ -1,0 +1,109 @@
+{{#paper-sidenav-container class="site-nav-container"}}
+
+  {{#paper-sidenav
+    class="md-whiteframe-z2 main-sidenav"
+    name="left-main"
+    open=leftSidebarOpen
+    onToggle=(action (mut leftSidebarOpen))
+  }}
+      {{#paper-toolbar as |toolbar|}}
+        {{#toolbar.tools}}Menu{{/toolbar.tools}}
+      {{/paper-toolbar}}
+
+        {{#paper-item class=(concat "menu-item" (if (is-active "intro") " active")) href=(href-to "intro")}}Welcome{{/paper-item}}
+        {{paper-markdown-menu tree=model.steps}}
+
+  {{/paper-sidenav}}
+
+  <div id="main" class="flex layout-column">
+
+    {{#paper-toolbar class="main-toolbar" as |toolbar|}}
+      {{#toolbar.tools}}
+        {{#paper-sidenav-toggle name="left-main" as |toggleNav|}}
+          {{#paper-button iconButton=true classNames="hide-gt-sm" onClick=(action toggleNav)}}
+            {{paper-icon "menu"}}
+          {{/paper-button}}
+        {{/paper-sidenav-toggle}}
+        <span class="flex" />
+        {{#if session.isAuthenticated}}
+          {{#paper-button onClick=(action (mut showDialog))}}My Details{{/paper-button}}
+
+        {{else}}
+
+        {{/if}}
+      {{/toolbar.tools}}
+    {{/paper-toolbar}}
+
+    {{#paper-content id="main-content" padding=true}}
+        {{outlet}}
+    {{/paper-content}}
+
+
+    {{#if showDialog}}
+      {{#paper-dialog class="flex-gt-sm-70 flex-lt-lg-60" onClose=(action "closeDialog") clickOutsideToClose=true}}
+        {{#paper-toolbar}}
+          {{#paper-toolbar-tools}}
+            <h2>Your App Details</h2>
+            <span class="flex"></span>
+            {{#paper-button iconButton=true onClick=(action "closeDialog")}}{{paper-icon icon="close"}}{{/paper-button}}
+          {{/paper-toolbar-tools}}
+        {{/paper-toolbar}}
+
+        {{#paper-dialog-content}}
+
+          {{#paper-list class="instance-details"}}
+            {{#paper-item class="md-2-line"}}
+              <div class="md-list-item-text">
+                <p class="instance-details__label">Instance Name</p>
+                <h3 class="instance-details__value">{{model.profile.slug}}</h3>
+              </div>
+              <div class="md-secondary-container">
+                {{#paper-button raised=true href="https://app.authmaker.com" target="_blank"}}
+                  Instance Dashboard
+                {{/paper-button}}
+              </div>
+            {{/paper-item}}
+            {{paper-divider}}
+            {{#paper-item class="md-2-line"}}
+              <div class="md-list-item-text">
+                <p class="instance-details__label">Application Domain</p>
+                <h3 class="instance-details__value">{{model.profile.applicationDomain}}</h3>
+              </div>
+              <div class="md-secondary-container">
+                {{#paper-button raised=true href=model.profile.applicationDomain target="_blank"}}
+                  View
+                {{/paper-button}}
+              </div>
+            {{/paper-item}}
+            {{paper-divider}}
+            {{#paper-item class="md-2-line"}}
+              <div class="md-list-item-text">
+                <p class="instance-details__label">Application Name</p>
+                <h3 class="instance-details__value">{{model.profile.applicationName}}</h3>
+              </div>
+              <div class="md-secondary-container">
+                {{#paper-button raised=true href=(concat 'https://' model.profile.slug '.authmaker.com/admin') target="_blank"}}
+                  App Admin
+                {{/paper-button}}
+              </div>
+            {{/paper-item}}
+            {{paper-divider}}
+            {{#paper-item class="md-2-line"}}
+              <div class="md-list-item-text">
+                <p class="instance-details__label">Bucket Name</p>
+                <h3 class="instance-details__value">{{model.profile.slug}}</h3>
+              </div>
+              <div class="md-secondary-container">
+                {{#paper-button raised=true href="https://console.cloud.google.com/home/dashboard" target="_blank"}}
+                  Google Cloud Console
+                {{/paper-button}}
+              </div>
+            {{/paper-item}}
+          {{/paper-list}}
+        {{/paper-dialog-content}}
+      {{/paper-dialog}}
+    {{/if}}
+
+  </div>
+
+{{/paper-sidenav-container}}

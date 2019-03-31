@@ -1,0 +1,35 @@
+.welcome-page {
+  &__hero {
+    background-image: url('/images/intro.jpg');
+    background-size: cover;
+    height: 190px;
+  }
+
+  &__logo {
+    margin: 10px;
+    max-height: 170px;
+  }
+
+  &__card-banner {
+    background-color: color($primary, '500');
+    color: contrastColor($primary, '500');
+  }
+
+  &__banner-text {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 32px;
+  }
+
+  &__headline {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    margin: 16px 0;
+  }
+
+  &__card-actions {
+    padding: 16px;
+  }
+
+}

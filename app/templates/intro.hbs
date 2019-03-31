@@ -1,0 +1,24 @@
+<div class="welcome-page page-content">
+  {{#paper-card class="welcome-page__card" as |card|}}
+    <IntroHero @logo={{config.logo}} @image={{config.coverImage}} />
+
+    <div class="welcome-page__card-banner md-padding layout-row">
+    <span class="welcome-page__banner-text">{{config.title}}</span>
+      <span class="flex" />
+    </div>
+
+    {{#card.content class="md-padding"}}
+      <h3 class="welcome-page__headline">👋  Welcome!!</h3>
+      {{markdown-content model=model}}
+    {{/card.content}}
+    {{#card.actions class="welcome-page__card-actions"}}
+      {{#paper-button
+        accent=true
+        raised=true
+        href=(href-to 'step' 'steps/step-1')
+      }}
+        Let's Go!
+      {{/paper-button}}
+    {{/card.actions}}
+  {{/paper-card}}
+</div>

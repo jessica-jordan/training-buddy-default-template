@@ -1,0 +1,201 @@
+$primary: "teal";
+$accent: "pink";
+$warn: "amber";
+@import 'ember-paper';
+/**
+ * Needed styles to set correct widths, from ember-paper demo site
+ */
+body {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+body.ember-application {
+  flex-direction: row;
+  flex: 1;
+  display: flex;
+}
+
+body > div.ember-view {
+  flex-direction: row;
+  flex: 1;
+  display: flex;
+}
+
+.site-nav-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#main {
+  position: relative;
+}
+
+.page-content {
+  max-width: 960px;
+}
+/**
+ * Main toolbar
+ */
+.main-toolbar {
+  &__current-user {
+    font-size: 14px;
+    margin-left: 8px;
+  }
+}
+/**
+ * Sidenav menu
+ */
+
+.main-sidenav {
+  min-height: 100%;
+}
+
+.menu-item {
+  font-size: 15px;
+
+  .md-list-item-inner {
+    font-size: 15px;
+  }
+  // .expand-icon {
+  //   position: relative;
+  //   right: -36px;
+  //   transition: transform 250ms linear;
+  // }
+  //
+  // &.expanded .expand-icon {
+  //   transform: rotate(-180deg);
+  // }
+}
+
+.submenu-list {
+  .md-list-item-inner {
+    padding-left: 36px;
+  }
+}
+
+.menu-item,
+.submenu-item {
+  min-height: 40px;
+
+  &.active,
+  &:hover {
+    background-color: rgba(158,158,158, .2);
+  }
+
+  .md-list-item-inner {
+    min-height: 40px;
+    // md-icon {
+    //   margin-top: 0;
+    //   margin-bottom: 0;
+    // }
+  }
+}
+
+#main-content {
+  flex-grow: 1;
+}
+/**
+  * Styles for route guides/page
+  */
+.guide-page {
+  &__card {
+    .completed-alert {
+      color: color($accent, '500');
+      font-weight: 500;
+      margin: 0 10px 0 0;
+
+      span.emoji {
+        margin: 0 8px;
+      }
+    }
+  }
+
+  &__card-actions-container {
+    padding: 16px;
+  }
+
+  .checklist-progress {
+    margin: 1em 0;
+  }
+
+  &__title-divider {
+    margin: 0 10px;
+  }
+
+  &__parent-title {
+    font-style: italic;
+  }
+
+  a {
+    transition: color 0.1s linear;
+  }
+
+  &__next-link,
+  &__prev-link {
+    margin: 10px;
+    padding: 8px;
+    color: color($primary, '500');
+
+    &:hover {
+      color: color($primary, '800');
+    }
+  }
+
+  &__prev-link {
+    text-align: left;
+
+    &::before {
+      content: "\2039";
+    }
+
+    &:hover {
+      &::before {
+        transform: translateX(-0.5em);
+      }
+    }
+  }
+
+  &__next-link {
+    text-align: right;
+
+    &::after {
+      content: "\203A";
+    }
+
+    &:hover {
+      &::after {
+        transform: translateX(0.5em);
+      }
+    }
+  }
+
+  a::after,
+  a::before {
+    display: inline-block;
+    margin: 0 0.5em;
+    transition: transform 200ms;
+  }
+}
+
+img.guide-image {
+  width: 100%;
+  height: auto;
+}
+
+.instance-details md-list-item.md-2-line {
+  p.instance-details__label {
+    margin-bottom: 3px;
+  }
+
+  h3.instance-details__value {
+    white-space: normal;
+  }
+}
+
+
+@import 'welcome-page';
+@import 'highlight';

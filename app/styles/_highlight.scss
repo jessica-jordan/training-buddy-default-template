@@ -1,0 +1,90 @@
+div.filename {
+  background-color: #292929;
+  margin-bottom: 2em;
+
+  pre[class*="language-"] {
+    border-radius: 0 0 0.3em 0.3em;
+  }
+}
+
+pre[class*="language-"] {
+  background-color: #444545;
+  margin-bottom: 2em;
+}
+
+pre.language-bash {
+  background-color: #272822;
+}
+
+.filename {
+  border-radius: 0.3em;
+}
+
+.ribbon {
+  margin-top: 0.33em;
+  float: right;
+  height: 20px;
+  width: 52px;
+  background: 0 0 no-repeat;
+  background-size: 52px 20px;
+}
+
+.filename > span {
+  font-family: Menlo, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", Courier, monospace;
+  font-size: 0.8em;
+  color: lightgrey;
+  display: block;
+  padding: 5px 0 0 10px;
+}
+
+.repo-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.3em 0.3em 0 0;
+}
+
+.repo-banner > span {
+  padding: 5px 10px 2px 10px;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+
+.repo-banner.frontend {
+  background-color: color($accent, '100');
+  color: contrastColor($accent, '100');
+}
+
+.repo-banner.backend {
+  background-color: color($accent, '900');
+  color: contrastColor($accent, '900');
+}
+
+.filename.javascript .ribbon,
+.filename.js .ribbon {
+  background-image: url("/images/ribbon-js.svg");
+}
+
+.filename.html .ribbon {
+  background-image: url("/images/ribbon-html.svg");
+}
+
+.filename.handlebars .ribbon,
+.filename.hbs .ribbon {
+  background-image: url("/images/ribbon-hbs.svg");
+}
+
+code:not([class*="language-"]) {
+  background-color: #F8E7CF;
+  border-radius: 3px;
+  font-family: Menlo, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", Courier, monospace;
+  font-size: 0.9em;
+  padding: 0.2em 0.5em;
+  margin: 0 0.1em;
+  -webkit-font-feature-settings: "kern", "tnum";
+  -moz-font-feature-settings: "kern", "tnum";
+  -ms-font-feature-settings: "kern", "tnum";
+  font-feature-settings: "kern", "tnum";
+}
