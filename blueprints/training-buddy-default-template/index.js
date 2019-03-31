@@ -20,5 +20,15 @@ module.exports = {
     }
   },
 
+  afterInstall() {
+    let devInstall = {
+      packages: [
+        'ember-cli-sass',
+      ]
+    }
+
+    return this.addAddonsToProject(devInstall)
+  },
+
   filesToRemove: ['app/styles/app.css'],
 };
