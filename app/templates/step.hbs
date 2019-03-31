@@ -6,9 +6,9 @@
           {{model.step.title}}
         {{/text.headline}}
       {{/title.text}}
-      {{#if (contains model.step.task.id (map-by 'id' model.profile.tasks))}}
-        {{#paper-button raised=true iconButton=true onClick=(action 'markTaskIncomplete' model.profile model.step.task.id)}}
-          {{paper-icon 'undo'}}
+      {{#if (contains model.step.task.id (map-by "id" model.profile.tasks))}}
+        {{#paper-button raised=true iconButton=true onClick=(action "markTaskIncomplete" model.profile model.step.task.id)}}
+          {{paper-icon "undo"}}
           {{#paper-tooltip}}Revert task to incomplete{{/paper-tooltip}}
         {{/paper-button}}
       {{/if}}
@@ -19,16 +19,16 @@
     <div class="guide-page__card-actions-container">
       {{#if model.step.task}}
         {{#card.actions}}
-          {{#unless (contains model.step.task.id (map-by 'id' model.profile.tasks))}}
-            {{#paper-button accent=true raised=true onClick=(action 'markTaskCompleted' model.profile model.step.task.id)}}
+          {{#if (contains model.step.task.id (map-by "id" model.profile.tasks))}}
+            <p class="completed-alert"><span class="emoji">🎉</span>You've completed this task!</p>
+            {{#paper-button primary=true raised=true href=(href-to "step" (get (next model.step sortedSteps) "id"))}}Next{{/paper-button}}
+          {{else}}
+            {{#paper-button accent=true raised=true onClick=(action "markTaskCompleted" model.profile model.step.task.id)}}
               {{paper-icon "check"}} Mark Complete
             {{/paper-button}}
-          {{else}}
-            <p class="completed-alert"><span class="emoji">🎉</span>You've completed this task!</p>
-            {{#paper-button primary=true raised=true href=(href-to 'step' (get (next model.step sortedSteps) 'id'))}}Next{{/paper-button}}
-          {{/unless}}
+          {{/if}}
         {{/card.actions}}
-        {{checklist-progress checklistTasks=(map-by 'id' (map-by 'task' model.steps)) completedTasks=(map-by 'id' model.profile.tasks)}}
+        {{checklist-progress checklistTasks=(map-by "id" (map-by "task" model.steps)) completedTasks=(map-by "id" model.profile.tasks)}}
       {{/if}}
     </div>
   {{/paper-card}}
@@ -39,15 +39,15 @@
 
   <div class="guide-page__footer layout-row">
     {{#if (has-previous model.step sortedSteps)}}
-      {{#link-to 'step' (get (previous model.step sortedSteps) 'id') class="guide-page__prev-link"}}
-        {{get (previous model.step sortedSteps) 'title'}}
+      {{#link-to "step" (get (previous model.step sortedSteps) "id") class="guide-page__prev-link"}}
+        {{get (previous model.step sortedSteps) "title"}}
       {{/link-to}}
     {{/if}}
     <span class="flex" />
 
     {{#if (has-next model.step sortedSteps)}}
-      {{#link-to 'step' (get (next model.step sortedSteps) 'id') class="guide-page__next-link"}}
-        {{get (next model.step sortedSteps) 'title'}}
+      {{#link-to "step" (get (next model.step sortedSteps) "id") class="guide-page__next-link"}}
+        {{get (next model.step sortedSteps) "title"}}
       {{/link-to}}
     {{/if}}
   </div>

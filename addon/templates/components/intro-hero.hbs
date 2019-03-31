@@ -1,7 +1,8 @@
 {{#if (or @logo @image)}}
-  <div class="welcome-page__hero" style={{this.backgroundStyle}}>
+  {{! template-lint-disable no-inline-styles }}
+  <div class="welcome-page__hero" style={{html-safe (concat "background-image: url(" @image ")")}}>
     {{#if @logo}}
-      <img class="welcome-page__logo" src={{@logo}}>
+      <img class="welcome-page__logo" src={{@logo}} alt="logo">
     {{/if}}
   </div>
 {{/if}}

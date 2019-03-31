@@ -6,12 +6,13 @@
     open=leftSidebarOpen
     onToggle=(action (mut leftSidebarOpen))
   }}
-      {{#paper-toolbar as |toolbar|}}
-        {{#toolbar.tools}}Menu{{/toolbar.tools}}
-      {{/paper-toolbar}}
 
-        {{#paper-item class=(concat "menu-item" (if (is-active "intro") " active")) href=(href-to "intro")}}Welcome{{/paper-item}}
-        {{paper-markdown-menu tree=model.steps}}
+    {{#paper-toolbar as |toolbar|}}
+      {{#toolbar.tools}}Menu{{/toolbar.tools}}
+    {{/paper-toolbar}}
+
+    {{#paper-item class=(concat "menu-item" (if (is-active "intro") " active")) href=(href-to "intro")}}Welcome{{/paper-item}}
+    {{paper-markdown-menu tree=model.steps}}
 
   {{/paper-sidenav}}
 
@@ -35,7 +36,7 @@
     {{/paper-toolbar}}
 
     {{#paper-content id="main-content" padding=true}}
-        {{outlet}}
+      {{outlet}}
     {{/paper-content}}
 
 
@@ -82,7 +83,7 @@
                 <h3 class="instance-details__value">{{model.profile.applicationName}}</h3>
               </div>
               <div class="md-secondary-container">
-                {{#paper-button raised=true href=(concat 'https://' model.profile.slug '.authmaker.com/admin') target="_blank"}}
+                {{#paper-button raised=true href=(concat "https://" model.profile.slug ".authmaker.com/admin") target="_blank"}}
                   App Admin
                 {{/paper-button}}
               </div>

@@ -2,11 +2,11 @@
   Steps
 {{/paper-item}}
 
-{{#each (sort-by 'order' tree) as |item|}}
+{{#each (sort-by "order" tree) as |item|}}
   <div class="submenu-list">
     {{#paper-item
-      href=(unless noContent (href-to 'step' item.id))
-      class=(concat "menu-item" (if (is-active 'step' item.id)" active"))
+      href=(unless noContent (href-to "step" item.id))
+      class=(concat "menu-item" (if (is-active "step" item.id)" active"))
       onClick=(action "scrollTop")
     }}
       {{item.title}}
