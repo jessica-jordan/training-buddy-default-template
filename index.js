@@ -32,6 +32,12 @@ module.exports = {
       }
     }
 
+    if(!app.options.showdown) {
+      app.options.showdown = {
+        openLinksInNewWindow: true
+      };
+    }
+
     this._super.included.apply(this, arguments);
   },
 };
