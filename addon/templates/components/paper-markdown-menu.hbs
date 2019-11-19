@@ -9,7 +9,7 @@
       class=(concat "menu-item" (if (is-active "step" item.id)" active"))
       onClick=(action "scrollTop")
     }}
-      {{item.title}}
+     {{paper-markdown-menu-item item=item}}
     {{/paper-item}}
   </div>
 {{/each}}
